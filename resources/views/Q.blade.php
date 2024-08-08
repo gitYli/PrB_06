@@ -7,6 +7,21 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+        <style>
+            .alert {
+                padding: 20px;
+                background-color: #f44336;
+                color: white;
+                opacity: 1;
+                transition: opacity 0.6s;
+                margin-bottom: 15px;
+                border-radius: 5px;
+            }
+
+            .alert.success {background-color: #198754;}
+            .alert.info {background-color: #2196F3;}
+            .alert.warning {background-color: #ff9800;}
+        </style>
 	</head>
 	<body class="is-preload" >
 
@@ -304,7 +319,13 @@
 						<!-- Contact -->
 							<article id="contact">
 								<h2 class="major">اترك لنا رسالتك</h2>
-								<form method="post" action="#">
+								<form action="/q" method="post">
+                                    @csrf
+                                    @if(session()->has('message'))
+                                        <div class="alert success">
+                                            {{ session('message') }}
+                                        </div>
+                                    @endif
 									<div class="fields">
 										<div class="field half">
 											<label for="name">الاسم</label>
