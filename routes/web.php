@@ -12,6 +12,10 @@ Route::get('/q', function () {
     return view('Q');
 });
 
+Route::get('/Inf', function () {
+    return view('Information');
+});
+
 #Route::post('/q', 'ContactController@storeData');
 Route::post('/q', [ContactController::class, 'storeData']);
 

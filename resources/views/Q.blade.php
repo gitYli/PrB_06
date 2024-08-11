@@ -393,7 +393,8 @@
 		
         <section id="contact" class="text-start">
             <h2>اترك لنا رسالتك</h2>
-            <form>
+            <form action="/q" method="POST">
+			@csrf
                 <div class="mb-3">
                     <label for="name" class="form-label">الاسم</label>
                     <input type="text" class="form-control" id="name" name="name">
