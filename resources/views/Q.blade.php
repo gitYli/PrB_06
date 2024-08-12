@@ -51,15 +51,7 @@
             position: relative;
             display: inline-block;
         }
-        h2::after {
-            content: '';
-            width: 50px;
-            height: 3px;
-            background-color: #007bff;
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-        }
+        
         .btn-primary {
             background-color: #007bff;
             border-color: #007bff;
