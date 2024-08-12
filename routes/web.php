@@ -16,12 +16,6 @@ Route::get('/q', function () {
 
 Route::post('/q', [ContactController::class, 'storeData']);
 
-Route::get('/test', function () {
-    return view('test');
-});
-
-Route::post('/data', [ServicesController::class, 'storeData']);
-
 Route::get('/contact', [RetrieveContactController::class, 'index']);
 
 
@@ -31,3 +25,4 @@ Route::post('custom-login', [CustomAuthController::class, 'customLogin'])->name(
 Route::get('/admin/registration', [CustomAuthController::class, 'registration'])->name('register-user');
 Route::post('custom-registration', [CustomAuthController::class, 'customRegistration'])->name('register.custom');
 Route::get('signout', [CustomAuthController::class, 'signOut'])->name('signout');
+Route::get('/Information', [ContactController::class, 'show']);
