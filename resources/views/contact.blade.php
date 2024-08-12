@@ -21,7 +21,7 @@
         font-size: 20px;
         font-weight: 500;
         padding: 1em;
-        max-width: 25ch;
+        max-width: 50ch;
         margin: 1em;
     }
     .tooltip {
@@ -88,7 +88,7 @@
             {{ $value->comment }}
         </div>
         <div class="tooltip-left message">
-            {{ $value->comment }}
+            شكراً لتواصلكم معنا، سوف نحاول الرد عليكم باسرع وقت
         </div>
     </div>
     <!-- Footer -->
