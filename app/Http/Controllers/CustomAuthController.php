@@ -27,7 +27,7 @@ class CustomAuthController extends Controller
 
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
-            return redirect()->intended('admin/dashboard')
+            return redirect()->intended('admin/services')
                 ->withSuccess('Signed in');
         }
         $validator['emailPassword'] = 'Email address or password is incorrect.';
@@ -52,7 +52,7 @@ class CustomAuthController extends Controller
         $data = $request->all();
         $check = $this->create($data);
 
-        return redirect("admin/dashboard")->withSuccess('You have signed-in');
+        return redirect("admin/services")->withSuccess('You have signed-in');
     }
 
 
@@ -65,11 +65,20 @@ class CustomAuthController extends Controller
         ]);
     }
 
-    public function dashboard()
+    public function services()
     {
         if(Auth::check()){
-            $users = DB::table('services')->select('Services_name', 'Services_img', 'Services_description')->get();
-            return view('admin.dashboard')->with('users', $users);
+            $users = DB::table('services')->select('id', 'Services_name', 'Services_img', 'Services_description')->get();
+            return view('admin.services')->with('users', $users);
+        }
+
+        return redirect("admin/login")->withSuccess('You are not allowed to access');
+    }
+    public function clients()
+    {
+        if(Auth::check()){
+            $users = DB::table('clients')->select('id', 'Client_name', 'Client_img', 'Client_description')->get();
+            return view('admin.clients')->with('users', $users);
         }
 
         return redirect("admin/login")->withSuccess('You are not allowed to access');

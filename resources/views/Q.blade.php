@@ -51,7 +51,7 @@
             position: relative;
             display: inline-block;
         }
-        
+
         .btn-primary {
             background-color: #007bff;
             border-color: #007bff;
@@ -76,19 +76,19 @@
         .footer a:hover {
             color: #0056b3;
         }
-		
+
 		img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 40%;
-}
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 40%;
+        }
     </style>
 </head>
-<body>
+<body data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="50">
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+    <nav class="navbar navbar-expand-sm navbar-light sticky-top">
         <div class="container">
             <a class="navbar-brand" href="#"><img src="images/logo.png" alt="Logo"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -136,7 +136,7 @@
 								</p>
 								<br>
 								<h2 class="major">برنامج قمة للنداء الآلي</h2>
-								<span class="image main"><img src="images/pic01.jpg" alt="" class="img-fluid rounded mb-4 shadow-sm" /></span> 
+								<span class="image main"><img src="images/pic01.jpg" alt="" class="img-fluid rounded mb-4 shadow-sm" /></span>
 								<p>
 										هو نظام تبليغ عن الحالات الطارئه
 										للمنشآت الصحية أو غيرها من
@@ -371,7 +371,7 @@
         <section id="about">
             <h1>من نحن</h1>
 			<span class="image main"><img src="images/pic03.jpg" alt="" class="img-fluid rounded mb-4 shadow-sm"/></span>
-           
+
             <p>
 											إيمانًا منا بأهمية البرمجة و العالم الرقمي في حياتنا كنا نحن بانوراما القصيم، من الرواد في هذه المجالاتي التي تسعى للارتقاء بمجال التصميم والبرمجة لتكون من كبرى الصروح بالمملكة والشرق الأوسط في تصميم وبرمجة المواقع وتطبيقات الجوال والبرامج الإدارية والمحاسبية .
 										</p>
@@ -382,7 +382,7 @@
 									رسالتنا هي خلق مجتمع واعِ فكريًا و متطور علميًا، قادرًا على مواكبة العالم الرقمي بأسهل الطرق وأبسطها.
 								</p>
         </section>
-		
+
         <section id="contact" class="text-start">
             <h2>اترك لنا رسالتك</h2>
             <form action="/q" method="POST">

@@ -9,9 +9,10 @@ use App\Http\Controllers\Controller;
 
 class RetrieveContactController extends Controller
 {
-    public function index()
+    public function retrieve()
     {
-        $users = DB::table('contact')->select('name', 'comment')->get();
-        return view('contact')->with('users', $users);
+        $services = DB::table('services')->select('id', 'Services_name', 'Services_img', 'Services_description')->get();
+        $clients = DB::table('clients')->select('id', 'Client_name', 'Client_img', 'Client_description')->get();
+        return view('Panorama-Q', compact('services', 'clients'));
     }
 }
