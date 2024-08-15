@@ -26,6 +26,7 @@
         <ul class="nav nav-pills">
             <li class="nav-item"><a href="{{ route('admin.services') }}" class="nav-link" aria-current="page">الخدمات</a></li>
             <li class="nav-item"><a href="{{ route('admin.clients') }}" class="nav-link active">العملاء</a></li>
+            <li class="nav-item"><a href="{{ route('admin.contact') }}" class="nav-link">الرسائل</a></li>
             <li class="nav-item"><a href="{{ route('signout') }}" class="nav-link">تسجيل الخروج</a></li>
             <li class="nav-item" onclick="toggleTheme()"><i id="theme" class="nav-link bi bi-sun-fill"></i></li>
         </ul>
@@ -42,6 +43,11 @@
             {{ session('message-danger') }}
         </div>
     @endif
+        @if(session()->has('message-warning'))
+            <div class="alert alert-warning">
+                {{ session('message-warning') }}
+            </div>
+        @endif
 </div>
 
 <section class="py-3 py-md-5">
@@ -61,6 +67,9 @@
                             <div class="col-12">
                                 <label class="form-label" for="Client_img">الصورة</label>
                                 <input type="file" class="form-control" name="Client_img" id="Client_img" required>
+                                @if ($errors->has('Client_img'))
+                                    <span class="text-danger">{{ $errors->first('Client_img') }}</span>
+                                @endif
                             </div>
                             <div class="col-12">
                                 <label for="Client_description" class="form-label">الوصف</label>
@@ -127,13 +136,8 @@
                             <div class="container-fluid">
                                 <form action="/clients/edit/{{$value->id}}" method="post" enctype="multipart/form-data">
                                     @csrf
-                                    @if(session()->has('message-success'))
-                                        <div class="alert alert-success">
-                                            {{ session('message-success') }}
-                                        </div>
-                                    @endif
                                     <div class="row">
-                                        <h3 class="form-label">تعديل معلومات العميل {{ $value->Client_name }}</h3>
+                                        <h3 class="form-label">تعديل معلومات العميل: {{ $value->Client_name }}</h3>
                                         <div class="col-12 gy-1 gy-xl-1">
                                             <label class="form-label" for="Client_name">اسم العميل</label>
                                             <input type="text" class="form-control" name="Client_name" id="Client_name"
@@ -142,6 +146,9 @@
                                         <div class="col-12 gy-1 gy-xl-1">
                                             <label class="form-label" for="Client_img">الصوره</label>
                                             <input type="file" class="form-control" name="Client_img" id="Client_img" required>
+                                            @if ($errors->has('Client_img'))
+                                                <span class="text-danger">{{ $errors->first('Client_img') }}</span>
+                                            @endif
                                         </div>
                                         <div class="col-12 gy-1 gy-xl-1">
                                             <label for="Client_description" class="form-label">الوصف</label>

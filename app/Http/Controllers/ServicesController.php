@@ -30,21 +30,21 @@ class ServicesController extends Controller
         }
         $data->save();;
 
-        return redirect('/admin/services')->with(['message-success' => 'استلمنا رسالتك']);
+        return redirect('/admin/services')->with(['message-success' => 'تم اضافة الخدمة بنجاح']);
     }
 
     public function update(Request $request, $id)
     {
-        $data = Services::findOrFail($id);
-
-        $file = $data->Services_img;
-        unlink(public_path('Images/'.$file));
-
         $request->validate([
             'Services_name' => 'required | string',
             'Services_description' => 'required | string',
             'Services_img' => 'required | image | mimes:jpeg,png,jpg,gif,svg | ',
         ]);
+
+        $data = Services::findOrFail($id);
+
+        $file = $data->Services_img;
+        unlink(public_path('Images/'.$file));
 
         if($request->file('Services_img')){
             $file= $request->file('Services_img');
@@ -56,7 +56,7 @@ class ServicesController extends Controller
         }
         $data->save();;
 
-        return redirect('/admin/services')->with(['message-success' => 'استلمنا رسالتك']);
+        return redirect('/admin/services')->with(['message-success' => 'تم تعديل بيانات الخدمة بنجاح']);
     }
 
     public function destroy($id) {
@@ -66,8 +66,8 @@ class ServicesController extends Controller
             $file = $data->Services_img;
             unlink(public_path('Images/'.$file));
             $data->delete();
-            return redirect('/admin/services')->with(['message-danger' => 'استلمنا رسالتك']);
+            return redirect('/admin/services')->with(['message-danger' => 'تم حذف الخدمة']);
         }else
-            return redirect('/admin/services')->with(['message-success' => 'رسالتك']);
+            return redirect('/admin/services')->with(['message-warning' => 'لا يوجد خدمة مطابقة للبيانات المدخلة']);
     }
 }

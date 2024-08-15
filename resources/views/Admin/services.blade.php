@@ -26,36 +26,12 @@
         <ul class="nav nav-pills">
             <li class="nav-item"><a href="{{ route('admin.services') }}" class="nav-link active" aria-current="page">الخدمات</a></li>
             <li class="nav-item"><a href="{{ route('admin.clients') }}" class="nav-link">العملاء</a></li>
+            <li class="nav-item"><a href="{{ route('admin.contact') }}" class="nav-link">الرسائل</a></li>
             <li class="nav-item"><a href="{{ route('signout') }}" class="nav-link">تسجيل الخروج</a></li>
             <li class="nav-item" onclick="toggleTheme()"><i id="theme" class="nav-link bi bi-sun-fill"></i></li>
         </ul>
     </header>
 </div>
-{{--<nav class="navbar navbar-light navbar-expand-lg mb-5" style="background-color: #e3f2fd;">--}}
-{{--    <div class="container">--}}
-{{--        <a class="navbar-brand mr-auto" href="#">Kodsozluk</a>--}}
-{{--        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"--}}
-{{--                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">--}}
-{{--            <span class="navbar-toggler-icon"></span>--}}
-{{--        </button>--}}
-{{--        <div class="collapse navbar-collapse" id="navbarNav">--}}
-{{--            <ul class="navbar-nav">--}}
-{{--                @guest--}}
-{{--                    <li class="nav-item">--}}
-{{--                        <a class="nav-link" href="{{ route('login') }}">Login</a>--}}
-{{--                    </li>--}}
-{{--                    <li class="nav-item">--}}
-{{--                        <a class="nav-link" href="{{ route('register-user') }}">Register</a>--}}
-{{--                    </li>--}}
-{{--                @else--}}
-{{--                    <li class="nav-item">--}}
-{{--                        <a class="nav-link" href="{{ route('signout') }}">Logout</a>--}}
-{{--                    </li>--}}
-{{--                @endguest--}}
-{{--            </ul>--}}
-{{--        </div>--}}
-{{--    </div>--}}
-{{--</nav>--}}
 <div class="container">
     @if(session()->has('message-success'))
         <div class="alert alert-success">
@@ -65,6 +41,11 @@
     @if(session()->has('message-danger'))
         <div class="alert alert-danger">
             {{ session('message-danger') }}
+        </div>
+    @endif
+    @if(session()->has('message-warning'))
+        <div class="alert alert-warning">
+            {{ session('message-warning') }}
         </div>
     @endif
 </div>
@@ -79,13 +60,16 @@
                         <div class="row gy-1 gy-xl-1 p-3 p-xl-4">
                             <h1 class="form-label">ادخل خدمة جديدة</h1>
                             <div class="col-12">
-                                <label class="form-label" for="Services_name">العنوان</label>
+                                <label class="form-label" for="Services_name">اسم الخدمة</label>
                                 <input type="text" class="form-control" name="Services_name" id="Services_name"
                                        required>
                             </div>
                             <div class="col-12">
                                 <label class="form-label" for="Services_img">الصورة</label>
                                 <input type="file" class="form-control" name="Services_img" id="Services_img" required>
+                                @if ($errors->has('Services_img'))
+                                    <span class="text-danger">{{ $errors->first('Services_img') }}</span>
+                                @endif
                             </div>
                             <div class="col-12">
                                 <label for="Services_description" class="form-label">الوصف</label>
@@ -152,13 +136,8 @@
                             <div class="container-fluid">
                                 <form action="/services/edit/{{$value->id}}" method="post" enctype="multipart/form-data">
                                     @csrf
-                                    @if(session()->has('message-success'))
-                                        <div class="alert alert-success">
-                                            {{ session('message-success') }}
-                                        </div>
-                                    @endif
                                     <div class="row">
-                                        <h3 class="form-label">تعديل خدمة {{ $value->Services_name }}</h3>
+                                        <h3 class="form-label">تعديل خدمة: {{ $value->Services_name }}</h3>
                                         <div class="col-12 gy-1 gy-xl-1">
                                             <label class="form-label" for="Services_name">العنوان</label>
                                             <input type="text" class="form-control" name="Services_name" id="Services_name"
@@ -167,6 +146,9 @@
                                         <div class="col-12 gy-1 gy-xl-1">
                                             <label class="form-label" for="Services_img">الصوره</label>
                                             <input type="file" class="form-control" name="Services_img" id="Services_img" required>
+                                            @if ($errors->has('Services_img'))
+                                                <span class="text-danger">{{ $errors->first('Services_img') }}</span>
+                                            @endif
                                         </div>
                                         <div class="col-12 gy-1 gy-xl-1">
                                             <label for="Services_description" class="form-label">الوصف</label>
@@ -185,17 +167,6 @@
                     </div>
                 </div>
             </div>
-            {{--            </div>--}}
-            {{--        <div class="col card">--}}
-            {{--        <div class="card mt-3">--}}
-            {{--            <img class="card-img-top" src="{{ url('Images/'.$value->Services_img) }}" alt="Card image" style="width:100%">--}}
-            {{--            <div class="card-body">--}}
-            {{--                <h4 class="card-title">{{ $value->Services_name }}</h4>--}}
-            {{--                <p class="card-text">{{ $value->Services_description }}</p>--}}
-            {{--                <a href="#" class="btn btn-primary">See Profile</a>--}}
-            {{--            </div>--}}
-            {{--        </div>--}}
-            {{--        </div>--}}
         @endforeach
     </div>
 </div>

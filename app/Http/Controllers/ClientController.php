@@ -28,21 +28,21 @@ class ClientController extends Controller
         }
         $data->save();;
 
-        return redirect('/admin/clients')->with(['message-success' => 'استلمنا رسالتك']);
+        return redirect('/admin/clients')->with(['message-success' => 'تم اضافة العميل بنجاح']);
     }
 
     public function update(Request $request, $id)
     {
-        $data = Clients::findOrFail($id);
-
-        $file = $data->Client_img;
-        unlink(public_path('Images/'.$file));
-
         $request->validate([
             'Client_name' => 'required | string',
             'Client_description' => 'required | string',
             'Client_img' => 'required | image | mimes:jpeg,png,jpg,gif,svg | ',
         ]);
+
+        $data = Clients::findOrFail($id);
+
+        $file = $data->Client_img;
+        unlink(public_path('Images/'.$file));
 
         if($request->file('Client_img')){
             $file= $request->file('Client_img');
@@ -54,7 +54,7 @@ class ClientController extends Controller
         }
         $data->save();;
 
-        return redirect('/admin/clients')->with(['message-success' => 'استلمنا رسالتك']);
+        return redirect('/admin/clients')->with(['message-success' => 'تم تعديل بيانات العميل بنجاح']);
     }
 
     public function destroy($id) {
@@ -64,9 +64,9 @@ class ClientController extends Controller
             $file = $data->Client_img;
             unlink(public_path('Images/'.$file));
             $data->delete();
-            return redirect('/admin/clients')->with(['message-danger' => 'استلمنا رسالتك']);
+            return redirect('/admin/clients')->with(['message-danger' => 'تم حذف العميل']);
         }else
-            return redirect('/admin/clients')->with(['message-success' => 'رسالتك']);
+            return redirect('/admin/clients')->with(['message-warning' => 'لا يوجد عميل مطابق للبيانات المدخلة']);
     }
 }
 

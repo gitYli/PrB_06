@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Http\Controllers\ContactController;
 use Illuminate\Http\Request;
 use App\Models\contact;
 use App\Models\User;
@@ -17,13 +16,13 @@ class ContactController extends Controller
             'comment' => $request->input('message'),
         ]);
 
-        return redirect('/q#contact')->with(['message' => 'استلمنا رسالتك']);
+        return redirect('/#contact')->with(['message-success' => 'استلمنا رسالتك']);
     }
-	
-	public function show()
+
+    public function show()
     {
-        $d = contact::all();  // Fetch all records from the 'contact' table and store them in $d
-        return view('Information', compact('d'));  // Pass $d to the view
+        $data = contact::all();
+        return view('admin/contact', compact('data'));
     }
 
 }

@@ -20,17 +20,17 @@ class CustomAuthController extends Controller
     public function customLogin(Request $request)
     {
         $validator =  $request->validate([
-            'email' => 'required',
+            'name' => 'required',
             'password' => 'required',
         ]);
 
 
-        $credentials = $request->only('email', 'password');
+        $credentials = $request->only('name', 'password');
         if (Auth::attempt($credentials)) {
             return redirect()->intended('admin/services')
                 ->withSuccess('Signed in');
         }
-        $validator['emailPassword'] = 'Email address or password is incorrect.';
+        $validator['emailPassword'] = 'إسم المستخدم أو كلمة المرور غير صحيحة.';
         return redirect("admin/login")->withErrors($validator);
     }
 
@@ -44,7 +44,7 @@ class CustomAuthController extends Controller
     public function customRegistration(Request $request)
     {
         $request->validate([
-            'name' => 'required',
+            'name' => 'required|unique:users',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6',
         ]);
@@ -52,7 +52,11 @@ class CustomAuthController extends Controller
         $data = $request->all();
         $check = $this->create($data);
 
-        return redirect("admin/services")->withSuccess('You have signed-in');
+        $credentials = $request->only('name', 'password');
+        if (Auth::attempt($credentials)) {
+            return redirect()->intended('admin/services')
+                ->withSuccess('Signed in');
+        }
     }
 
 
