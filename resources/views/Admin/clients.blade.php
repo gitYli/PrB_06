@@ -93,7 +93,7 @@
     <div class="row gap-1 m-xl-0 mx-1">
         @foreach($users as $value)
             <div class="col-12 col-lg-4 card shadow-sm p-0 m-xl-0 mb-1">
-                <img class="card-img-top" src="{{ url('Images/'.$value->Client_img) }}" alt="Card image"
+                <img class="card-img-top" src="{{ url('images/'.$value->Client_img) }}" alt="Card image"
                      style="width:100%">
                 <div class="card-body d-flex flex-column">
                     <h4 class="card-title">{{ $value->Client_name }}</h4>

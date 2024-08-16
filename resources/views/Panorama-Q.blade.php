@@ -62,7 +62,7 @@
         <h2 class="display-4 display-color mt-3 text-primary"><strong>خدماتنا</strong></h2>
         <div class="">
             @foreach($services as $service)
-                <img src="{{ url('Images/'.$service->Services_img) }}" class="rounded img-fluid w-lg-65 my-4 shadow-sm" alt="{{ $service->Services_name }}">
+                <img src="{{ url('images/'.$service->Services_img) }}" class="rounded img-fluid w-lg-65 my-4 shadow-sm" alt="{{ $service->Services_name }}">
                 <div class="">
                     <h5 class="display-6">{{ $service->Services_name }}</h5>
                     <span class="fs-5 text-body-secondary" style="white-space: pre-wrap">{{ $service->Services_description }}</span>
@@ -75,7 +75,7 @@
         <h2 class="display-4 display-color mt-3 text-primary"><strong>عملائنا</strong></h2>
         <div class="">
             @foreach($clients as $client)
-                <img src="{{ url('Images/'.$client->Client_img) }}" class="rounded img-fluid w-lg-65 my-4 shadow-sm" alt="{{ $client->Client_name }}">
+                <img src="{{ url('images/'.$client->Client_img) }}" class="rounded img-fluid w-lg-65 my-4 shadow-sm" alt="{{ $client->Client_name }}">
                 <div class="">
                     <h5 class="display-6">{{ $client->Client_name }}</h5>
                     <span class="fs-5 text-body-secondary" style="white-space: pre-wrap">{{ $client->Client_description }}</span>
