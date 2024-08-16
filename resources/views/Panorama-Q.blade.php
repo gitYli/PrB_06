@@ -35,7 +35,7 @@
     </style>
 </head>
 <body>
-<!-- Main Content -->
+
 <div class="container py-3">
     <header>
         <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
@@ -58,7 +58,6 @@
         </div>
     </header>
 
-    <!-- Services Section -->
     <section id="services" class="text-center py-5">
         <h2 class="display-4 display-color mt-3 text-primary"><strong>خدماتنا</strong></h2>
         <div class="">
@@ -72,7 +71,6 @@
         </div>
     </section>
 
-    <!-- Work Section -->
     <section id="work" class="text-center py-5">
         <h2 class="display-4 display-color mt-3 text-primary"><strong>عملائنا</strong></h2>
         <div class="">
@@ -86,7 +84,6 @@
         </div>
     </section>
 
-    <!-- About Section -->
     <section id="about" class="text-center py-5">
         <h2 class="display-4 display-color mt-3 text-primary"><strong>من نحن</strong></h2>
         <img src="images/pic03.jpg" alt="About Us" class="img-fluid rounded w-lg-65 my-4 shadow-sm"/>
@@ -106,7 +103,6 @@
         </p>
     </section>
 
-    <!-- Contact Section -->
     <section id="contact" class="py-5">
         <h2 class="display-4 text-center display-color my-3 text-primary"><strong>اترك لنا رسالتك</strong></h2>
         <form action="/" method="POST" class="mx-md-5 px-md-5">
@@ -147,7 +143,6 @@
 
             <div class="d-flex align-items-center link-body-emphasis text-decoration-none">
                 <span class="mb-3 mb-md-0 text-body-secondary">بانوراما القصيم للبرمجة والتصميم 2024 - 2014 ©</span>
-{{--                <a href="/"><img src="/images/logo-color.png" alt="logo" width="40px" height="40px"></a>--}}
             </div>
         </div>
     </footer>
