@@ -1,7 +1,6 @@
 <!DOCTYPE HTML>
 <html lang="ar" dir="rtl" data-bs-theme="dark">
 <head>
-    <link rel="icon" type="image/png" href="images/logo-color.png">
     <title>بانوراما القصيم للبرمجة و التصميم</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
@@ -26,12 +25,6 @@
         .scroll-to-top.show {
             display: block;
         }
-        /**{*/
-        /*    color: #f5912c;*/
-        /*}*/
-        /*.display-color{*/
-        /*    color: #7e2619;*/
-        /*}*/
     </style>
 </head>
 <body>
